@@ -73,7 +73,7 @@ class GameState:
         # Set the category score
         self.category_scores[category] = score
 
-        # Update upper section tally if needed
+        # Update upper section totals if needed
         if category in UPPER_CATEGORIES:
             self.upper_total += score
 

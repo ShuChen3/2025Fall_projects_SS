@@ -34,7 +34,7 @@ def reroll_indices(dice: list[int], indices_to_roll: list[int]) -> list[int]:
     Reroll specific dice based on the indices provided
 
     :param dice: current dice value
-    :param indices_to_roll: list of indices to reroll
+    :param indices_to_roll: list of indices to reroll #which positions to reroll
     :return: updated dice after rerolling selected indices
     """
 
