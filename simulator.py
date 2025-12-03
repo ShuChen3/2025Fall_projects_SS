@@ -66,8 +66,8 @@ class Simulator:
         #############################
         category = strategy.choose_category(dice, state)
 
-        score = score_category(category, dice)  # ✅ 算分
-        self.stats.record_category(category, score)  # ✅ 记录行为
+        score = score_category(category, dice)
+        self.stats.record_category(category, score)
 
         state.apply_category(category, dice)
 
