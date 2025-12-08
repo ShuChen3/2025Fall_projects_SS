@@ -9,15 +9,15 @@ class StatsCollector:
         self.rules = rules
         self.total_scores = []
 
-        # --- 新增：最低分游戏记录 ---
+        # lowest game record
         self.min_score = float('inf')
         self.min_score_game_state = None
-        # -----------------------------
+
 
         self.upper_totals = []
         self.bonus_count = 0
 
-        # ... (其他初始化保持不变)
+
         self.chance_scores = []
         self.yahtzee_hits = 0
         self.small_straight_hits = 0
@@ -98,7 +98,7 @@ class StatsCollector:
             print(f"\n--- Lowest Score Game Analysis (Score: {self.min_score}) ---")
             print("Category Scores Detail:")
 
-            # 使用列表来保证打印顺序
+
             state = self.min_score_game_state
             all_categories = sorted(state.category_scores.keys())
 

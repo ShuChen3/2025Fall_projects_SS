@@ -12,9 +12,8 @@ The simulator:
 from __future__ import annotations
 from dice_utils import roll_dice, reroll_with_keep
 from game_state import GameState
-################
 from stats_collector import StatsCollector
-from score_calculator import score_category, ScoreCalculator
+from score_calculator import ScoreCalculator
 from game_rules import GameRules
 
 class Simulator:
@@ -27,7 +26,6 @@ class Simulator:
         # self.max_rolls = max_rolls
         self.rules = rules
         self.score_calc = ScoreCalculator(rules)
-        ######################
         self.stats = StatsCollector(rules)
 
 
@@ -59,11 +57,7 @@ class Simulator:
 
             dice = reroll_with_keep(dice, keep_indices, faces=self.rules.num_faces)
 
-        # 最终选类别
-        #category = strategy.choose_category(dice, state)
-        #state.apply_category(category, dice)
 
-        #############################
         category = strategy.choose_category(dice, state)
 
         score = self.score_calc.calculate(category, dice)
@@ -86,7 +80,6 @@ class Simulator:
 
         get_bonus = state.upper_bonus > 0
         #return state.total_score
-        ##########################
         self.stats.record_game(
             final_score=state.total_score,
             upper_total = state.upper_total,

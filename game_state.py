@@ -8,12 +8,6 @@ from copy import deepcopy
 from game_rules import GameRules
 from score_calculator import ScoreCalculator
 
-from score_calculator import score_category
-
-
-# UPPER_CATEGORIES = ['aces', 'twos', 'threes', 'fours', 'fives', 'sixes']
-# LOWER_CATEGORIES = ['three_of_a_kind', 'four_of_a_kind', 'full_house',
-#                     'small_straight', 'large_straight', 'yahtzee', 'chance']
 
 class GameState:
     """
@@ -36,7 +30,7 @@ class GameState:
         # total score
         self.total_score = 0
 
-        # Helpers
+
 
     def available_categories(self) -> list[int]:
         """
@@ -70,7 +64,7 @@ class GameState:
         new_state.total_score = self.total_score
 
         return new_state
-        #return deepcopy(self)
+
 
     # Apply scoring
 
@@ -117,40 +111,12 @@ class GameState:
         self.update_totals()
 
 
-
-
-        # if self.category_scores[category] is not None:
-        #     raise ValueError(f"Category'{category} 'already filled")
-
-        # # Compute score using the score module
-        # score = score_category(category, dice)
-        #
-        # # Set the category score
-        # self.category_scores[category] = score
-        #
-        # # Update upper section totals if needed
-        # if category in UPPER_CATEGORIES:
-        #     self.upper_total += score
-        #
-        #     # Check for bonus (only once)
-        #     if self.upper_total >= 63 and self.upper_bonus == 0:
-        #         self.upper_bonus = 35
-        #
-        # # Update total score
-        # lower_filled_scores = [
-        #     s for cat, s in self.category_scores.items()
-        #     if cat in LOWER_CATEGORIES and s is not None
-        # ]
-        # self.total_score = self.upper_total + self.upper_bonus + sum(lower_filled_scores)
-
-        #  Debug / display
+    # Display
     def __repr__(self):
         filled_count = sum(len(s) for s in self.category_scores.values())
         total_slots = len(self.category_scores) * self.rules.max_category_fills
         return (
             f"GameState(upper_total={self.upper_total}, "
             f"upper={self.upper_total}/{self.rules.upper_bonus_threshold}, "
-            # f"total_score={self.total_score}, "
-            # 
             f"progress={filled_count}/{total_slots}, "
         )
