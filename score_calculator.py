@@ -184,7 +184,7 @@ class ScoreCalculator:
 
         # lower section
         self.category_functions['three_of_a_kind'] = lambda d:score_n_of_a_kind(d, 3)
-        self.category_functions['four_of_a_kind'] = lambda d:score_four_of_a_kind(d, 4)
+        self.category_functions['four_of_a_kind'] = lambda d:score_n_of_a_kind(d, 4)
         self.category_functions['full_house'] = score_full_house
         self.category_functions['yahtzee'] = score_yahtzee
         self.category_functions['chance'] = score_chance

@@ -90,7 +90,7 @@ class GameState:
         if self.upper_total >= self.rules.upper_bonus_threshold:
             self.upper_bonus = self.rules.upper_bonus_reward
 
-        self.total_socre = self.upper_total + self.upper_bonus + self.lower_total
+        self.total_score = self.upper_total + self.upper_bonus + self.lower_total
 
     def apply_category(self, category: str, dice: list[int]) -> None:
         """
@@ -104,7 +104,7 @@ class GameState:
         current_fills = self.category_scores[category]
 
         # check if over the maximum fill in times
-        if len(current_fills) < self.rules.max_category_fills:
+        if len(current_fills) >= self.rules.max_category_fills:
             raise ValueError(f'Category {category} is full(max {self.rules.max_category_fills})')
 
         # calculate the score
