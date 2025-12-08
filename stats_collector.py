@@ -54,6 +54,9 @@ class StatsCollector:
 
     def report(self):
         n = len(self.total_scores)
+        if n == 0:
+            print("No games played.")
+            return
 
 
         mean = sum(self.total_scores) / n
