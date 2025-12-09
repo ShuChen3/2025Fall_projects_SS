@@ -6,16 +6,16 @@ from game_rules import GameRules
 
 # Set game rules
 # Number of dices(standard: 5)
-NUM_DICE = 5
+NUM_DICE = 10
 
 # Number of faces of each dice(standard: 6)
-NUM_FACES = 6
+NUM_FACES = 12
 
 # Times to fill each score category(standard: 1)
-MAX_FILLS = 1
+MAX_FILLS = 5
 
 # Times of reroll(standard: 2)
-MAX_REROLLS = 2
+MAX_REROLLS = 6
 
 # Number of simulation games played
 NUM_GAMES = 2000
@@ -40,7 +40,7 @@ def run_simulation():
         "Greedy": GreedyStrategy(),
         "SimpleRule": SimpleRuleStrategy(),
         "HumanLike": HumanLikeStrategy(),
-        'Advanced': AdvancedHumanLikeStrategy()
+        'AdvancedHumanLike': AdvancedHumanLikeStrategy()
     }
 
     results = {}
@@ -74,10 +74,10 @@ def run_simulation():
 
     title_str = (f"Yahtzee Strategy Comparison\n"
                  f"Rules: {NUM_DICE} Dice, {NUM_FACES} Faces, "
-                 f"{MAX_FILLS}x Fills, {MAX_REROLLS} Roll time(s)")
+                 f"{MAX_FILLS}x Fill(s), {MAX_REROLLS} Reroll time(s)")
     plt.title(title_str, fontsize=12, fontweight='bold')
 
-    plt.legend(fontsize=10)
+    plt.legend(fontsize=10, loc='upper right', frameon=0.5)
     plt.grid(True, linestyle='--', alpha=0.6)
 
     plt.tight_layout()

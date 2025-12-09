@@ -20,7 +20,8 @@ class GameRules:
     # Calculate the threshold to get upper section bonus for different face of dices
     @property
     def upper_bonus_threshold(self) -> int:
-        return sum(range(1, self.num_faces + 1)) * 3
+        base_threshold = sum(range(1, self.num_faces + 1)) * 3
+        return base_threshold * self.max_category_fills
 
     def __repr__(self):
         """
