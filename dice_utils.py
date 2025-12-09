@@ -87,7 +87,14 @@ def get_longest_straight(dice: list[int]) -> list[int]:
     """
     Find the longest consecutive sequence of face values in the dice.
     Returns the list of values that form the sequence.
-    Example: [1, 3, 4, 5, 6] -> [3, 4, 5, 6]
+    >>> get_longest_straight([1, 3, 4, 5, 6])
+    [3, 4, 5, 6]
+    >>> get_longest_straight([4, 5, 6, 7, 10, 12])
+    [4, 5, 6, 7]
+    >>> get_longest_straight([5, 4, 9, 10, 12])
+    [4, 5]
+    >>> get_longest_straight([6, 8, 10, 12, 14])
+    [6]
     """
     if not dice:
         return []
