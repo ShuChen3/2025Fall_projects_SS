@@ -15,6 +15,14 @@ def score_upper_generic(dice: list[int], target_value: int) -> int:
     :param dice: input list of dices
     :param target_value: The value to calculate score for
     :return: score
+
+    >>> score_upper_generic([1, 2, 3, 3, 3], 3)
+    9
+    >>> score_upper_generic([4, 4, 2, 1], 4)
+    8
+    >>> score_upper_generic([1, 2, 3], 6)
+    0
+
     """
     return sum(d for d in dice if d == target_value)
 
@@ -25,6 +33,13 @@ def score_n_of_a_kind(dice: list[int], n: int) -> int:
     :param dice: input list of dices
     :param n: number of a kind
     :return: score
+
+    >>> score_n_of_a_kind([3, 3, 3, 2, 1], 3)
+    12
+    >>> score_n_of_a_kind([5, 5, 5, 5, 2], 4)
+    22
+    >>> score_n_of_a_kind([1, 2, 3, 4, 5], 3)
+    0
     """
     counts = Counter(dice)
     if any(c >= n for c in counts.values()):
@@ -33,6 +48,15 @@ def score_n_of_a_kind(dice: list[int], n: int) -> int:
 
 
 def score_full_house(dice: list[int]) -> int:
+    """
+    >>> score_full_house([2, 2, 3, 3, 3])
+    25
+    >>> score_full_house([4, 4, 4, 4, 2])
+    0
+    >>> score_full_house([1, 1, 2, 2, 3])
+    0
+
+    """
     counts = Counter(dice).values()
     # if sorted(counts) == [2, 3]:
     #     return 25
@@ -51,6 +75,18 @@ def score_straight_generic(dice: list[int], length_needed: int, fixed_score: int
     :param length_needed: length of straight
     :param fixed_score: score for straight
     :return: score
+
+    # small straight
+    >>> score_straight_generic([1, 2, 3, 4, 6], 4, 30)
+    30
+
+    # large straight
+    >>> score_straight_generic([2, 3, 4, 5, 6], 5, 40)
+    40
+
+    # no straight
+    >>> score_straight_generic([1, 1, 3, 4, 6], 4, 30)
+    0
     """
     unique_dice = sorted(set(dice))
     if len(unique_dice) < length_needed:
@@ -72,12 +108,25 @@ def score_straight_generic(dice: list[int], length_needed: int, fixed_score: int
 
 
 def score_yahtzee(dice: list[int]) -> int:
+    """
+    >>> score_yahtzee([6, 6, 6, 6, 6])
+    50
+    >>> score_yahtzee([6, 6, 6, 6, 5])
+    0
+    """
+
     if len(set(dice)) == 1:
         return 50
     else:
         return 0
 
 def score_chance(dice: list[int]) -> int:
+    """
+    >>> score_chance([1, 2, 3, 4, 5])
+    15
+    >>> score_chance([6, 6, 6, 6, 6])
+    30
+    """
     return sum(dice)
 
 
