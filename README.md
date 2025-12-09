@@ -9,7 +9,7 @@ In traditional Yahtzee, players roll up to five dice three times per round, choo
 ### Objectives
 1. Evaluate the performance of different strategies in a large number of repeated games under standard rules.
 2. After modifying the game rules, to study how different rules affect the optimal strategies and average scores.
-3. The program can be able to allow users to flexibly change rule of the games freely
+3. The program is designed to allow users to flexibly adjust the game rules as desired.
 
 ### Hypothesis
 H1: Under the standard Yahtzee rules, strategy complexity will be positively correlated with average score. 
