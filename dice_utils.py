@@ -23,9 +23,15 @@ def get_indices_to_reroll(dice: list[int], keep_indices: list[int]) -> list[int]
     :param dice: current dice
     :param keep_indices: indices of dice to keep
     :return: indices of dice to reroll
+
+    >>> get_indices_to_reroll([1, 2, 3, 4, 5], [0, 2])
+    [1, 3, 4]
+    >>> get_indices_to_reroll([6, 6, 6], [])
+    [0, 1, 2]
+    >>> get_indices_to_reroll([2, 3, 4], [0, 1, 2])
+    []
     """
     return [i for i in range(len(dice)) if i not in keep_indices]
-
 
 
 def reroll_indices(dice: list[int], indices_to_roll: list[int], faces: int = 6) -> list[int]:
@@ -59,6 +65,14 @@ def count_value(dice: list[int], faces: int = 6) -> list[int]:
     count how many times each face (1 - 6) appears in dice
     :param dice: list of dice values
     :return: List[int] counts[0] is count of 1s, ... counts[5] is count of 6s
+
+    >>> count_value([4, 4, 6, 1, 2])
+    [1, 1, 0, 2, 0, 1]
+    >>> count_value([1, 1, 1])
+    [3, 0, 0, 0, 0, 0]
+    >>> count_value([6, 5, 4, 3, 2, 1])
+    [1, 1, 1, 1, 1, 1]
+
     """
     counts = [0] * faces
     for value in dice:
