@@ -9,11 +9,15 @@ In traditional Yahtzee, players roll up to five dice three times per round, choo
 ### Objectives
 1. Evaluate the performance of different strategies in a large number of repeated games under standard rules.
 2. After modifying the game rules, to study how different rules affect the optimal strategies and average scores.
+3. The program is designed to allow users to flexibly adjust the game rules as desired.
 
 ### Hypothesis
-H1: Under the standard Yahtzee rules, the probability-based strategy (which assesses the expected value by using a probability model to evaluate the expected gain from each retained/re-drawn die) will outperform the random strategy or the greedy strategy, resulting in a higher average score.
+H1: Under the standard Yahtzee rules, strategy complexity will be positively correlated with average score. 
+As strategies incorporate more forward-looking or probabilistic decision-making logic, their average final scores will increase
 
-H2: Changing the number of dice from 3 to 4 will change which strategy achieves the highest average score.
+H2: When the number of faces on the dices increase, achieving the upper-section bonus becomes less feasible. 
+Under these conditions, strategies that rely on dynamically assessing bonus feasibility are expected to perform worse
 
-H3: Altering the scoring card in such as removing the “Full House” category or doubling the score of “Four of a Kind” will change which strategy yields the highest average score 
+H3: Altering the scoring card in such as removing the “Full House” category or 
+doubling the score of “Four of \\a Kind” will change which strategy yields the highest average score 
 
