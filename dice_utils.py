@@ -48,6 +48,7 @@ def reroll_with_keep(dice: list[int], keep_indices: list[int], faces: int = 6) -
     Re-roll all dice except those at keep_indices
     :param dice: current dice
     :param keep_indices: indices of dice to keep
+    :param faces: number of faces on each dice
     :return: updated dice after reroll
     """
     indices_to_reroll = get_indices_to_reroll(dice, keep_indices)
@@ -58,6 +59,7 @@ def count_value(dice: list[int], faces: int = 6) -> list[int]:
     """
     count how many times each face (1 - 6) appears in dice
     :param dice: list of dice values
+    :param faces: number of faces on each dice
     :return: List[int] counts[0] is count of 1s, ... counts[5] is count of 6s
     """
     counts = [0] * faces
@@ -67,6 +69,31 @@ def count_value(dice: list[int], faces: int = 6) -> list[int]:
     return counts
 
 
+def get_longest_straight(dice: list[int]) -> list[int]:
+    """
+    Find the longest consecutive sequence of face values in the dice.
+    Returns the list of values that form the sequence.
+    Example: [1, 3, 4, 5, 6] -> [3, 4, 5, 6]
+    """
+    if not dice:
+        return []
+    unique = sorted(set(dice))
+
+    max_seq = []
+    cur_seq = [unique[0]]
+
+    for i in range(len(unique) - 1):
+        if unique[i + 1] == unique[i] + 1:
+            cur_seq.append(unique[i + 1])
+        else:
+            if len(cur_seq) > len(max_seq):
+                max_seq = cur_seq
+            cur_seq = [unique[i + 1]]
+
+    if len(cur_seq) > len(max_seq):
+        max_seq = cur_seq
+
+    return max_seq
 
 
 

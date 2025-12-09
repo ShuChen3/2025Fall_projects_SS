@@ -19,7 +19,6 @@ class GameState:
         # None = not yet filled
         self.rules = rules
         self.score_calc = score_calc
-        # self.category_scores = {cat: None for cat in UPPER_CATEGORIES + LOWER_CATEGORIES}
         all_cats = self.score_calc.get_all_categories()
         self.category_scores: dict[int, list[int]] = {cat: [] for cat in all_cats}
 
@@ -36,7 +35,6 @@ class GameState:
         """
         Return list of categories not filled
         """
-        # return [cat for cat, score in self.category_scores.items() if score is None]
         return [
             cat for cat, scores in self.category_scores.items()
             if len(scores) < self.rules.max_category_fills
@@ -45,7 +43,6 @@ class GameState:
         """
         Game is complete if all categories are filled
         """
-        # return all(score is not None for score in self.category_scores.values())
         for scores in self.category_scores.values():
             if len(scores) < self.rules.max_category_fills:
                 return False

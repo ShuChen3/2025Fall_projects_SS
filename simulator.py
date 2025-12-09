@@ -19,11 +19,9 @@ from game_rules import GameRules
 class Simulator:
     def __init__(self, rules: GameRules):
         """
-        :param num_dice: normally 5 in standard Yahtzee rule, but adjustable for experiments.
-        :param max_rolls: normally 3 (roll + 2 rerolls).
+        :param rules: GameRules object
         """
-        # self.num_dice = num_dice
-        # self.max_rolls = max_rolls
+
         self.rules = rules
         self.score_calc = ScoreCalculator(rules)
         self.stats = StatsCollector(rules)
@@ -103,7 +101,7 @@ class Simulator:
         total_score = 0
         for _ in range(n):
             total_score += self.simulate_game(strategy)
-        self.stats.report()
+        #self.stats.report()
         return total_score / n
 
 
