@@ -66,8 +66,8 @@ def count_value(dice: list[int], faces: int = 6) -> list[int]:
     :param dice: list of dice values
     :return: List[int] counts[0] is count of 1s, ... counts[5] is count of 6s
 
-    >>> count_value([4, 4, 6, 1, 2])
-    [1, 1, 0, 2, 0, 1]
+    >>> count_value([4, 4, 6, 1, 3])
+    [1, 0, 1, 2, 0, 1]
     >>> count_value([1, 1, 1])
     [3, 0, 0, 0, 0, 0]
     >>> count_value([6, 5, 4, 3, 2, 1])
