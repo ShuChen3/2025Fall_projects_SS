@@ -7,7 +7,7 @@ import random
 
 def roll_dice(n: int = 5, faces: int = 6) -> list[int]:
     """
-    Roll a fair six-sided dice.
+    Roll a fair n-faces dice.
 
     :param n: number of dice to roll (default 5)
     :param faces: number of faces on each die (default 6)
