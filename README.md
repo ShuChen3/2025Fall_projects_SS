@@ -18,6 +18,5 @@ As strategies incorporate more forward-looking or probabilistic decision-making 
 H2: When the number of faces on the dices increase, achieving the upper-section bonus becomes less feasible. 
 Under these conditions, strategies that rely on dynamically assessing bonus feasibility are expected to perform worse
 
-H3: Altering the scoring card in such as removing the “Full House” category or 
-doubling the score of “Four of \\a Kind” will change which strategy yields the highest average score 
-
+H3: When the game allows more scoring opportunities per category by increasing from one fill-in to three, 
+the strategic advantages of strategies designed for scarce or restrictive rule settings are expected to diminish.
