@@ -7,8 +7,38 @@ import random
 from game_state import GameState
 from dice_utils import get_longest_straight
 
+
+class Strategy():
+    """
+    Base class for all Yahtzee strategies. Defines the interface and shared helper methods.
+    """
+
+    def choose_dice_to_keep(self, dice:list[int], roll_index: int, state:GameState) -> list[int]:
+        """
+        This method decide which dice indices to keep.
+        :param dice: input dice
+        :param roll_index: roll index
+        :param state: current game state
+        :return: list of dice indices to keep
+        """
+        raise NotImplementedError("Subclasses must implement this method")
+
+    def choose_category(self, dice:list[int], state:GameState) -> str:
+        """
+        This method decide which category to fill the score in.
+        :param dice: input dice
+        :param state: current game state
+        :return: string category name
+        """
+        raise NotImplementedError("Subclasses must implement this method")
+
+    def _get_upper_cat(self, face: int) -> str:
+        """Helper to generate category name like 'upper_1', 'upper_6'"""
+        return f"upper_{face}"
+
+
 # RandomStrategy: Randomly choose dice to keep and randomly put them in category
-class RandomStrategy:
+class RandomStrategy(Strategy):
     def choose_dice_to_keep(self, dice: list[int], _roll_index: int, _state: GameState) -> list[int]:
         num_dice = len(dice)
         if num_dice == 0: return []
@@ -22,7 +52,7 @@ class RandomStrategy:
         return random.choice(available)
 
 # GreedyStrategy: Keep the dice with most frequent value and put in the highest score category
-class GreedyStrategy:
+class GreedyStrategy(Strategy):
     def choose_dice_to_keep(self, dice: list[int], _roll_index: int, _state: GameState) -> list[int]:
         counts = Counter(dice)
         if not counts: return []
@@ -44,7 +74,7 @@ class GreedyStrategy:
         return best_cat
 
 # SimpleRuleStrategy: follow simple pre-set rules to choose dice to keep and put score in category
-class SimpleRuleStrategy:
+class SimpleRuleStrategy(Strategy):
     def choose_dice_to_keep(self, dice: list[int], _roll_index: int, _state: GameState) -> list[int]:
         # Check straight
         seq = get_longest_straight(dice)
@@ -101,10 +131,7 @@ class SimpleRuleStrategy:
 
 
 # HumanLike Strategy: mimic human player's strategy
-class HumanLikeStrategy:
-
-    def _get_upper_cat(self, val: int) -> str:
-        return f"upper_{val}"
+class HumanLikeStrategy(Strategy):
 
     def choose_dice_to_keep(self, dice: list[int], _roll_index: int, state: GameState) -> list[int]:
         counts = Counter(dice)
@@ -231,11 +258,7 @@ from collections import Counter
 from game_state import GameState
 
 
-class AdvancedHumanLikeStrategy:
-
-    def _get_upper_cat(self, face: int) -> str:
-        """Helper to generate category name like 'upper_1', 'upper_6'"""
-        return f"upper_{face}"
+class AdvancedHumanLikeStrategy(Strategy):
 
     def _needs_upper_bonus(self, state: GameState) -> bool:
         """
