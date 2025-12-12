@@ -4,35 +4,10 @@ from strategy_examples import RandomStrategy, GreedyStrategy, SimpleRuleStrategy
 from simulator import Simulator
 from game_rules import GameRules
 
-# Set game rules
-# Number of dices(standard: 5)
-NUM_DICE = 10
 
-# Number of faces of each dice(standard: 6)
-NUM_FACES = 12
+def run_simulation(rules: GameRules, num_games: int = 2000):
 
-# Times to fill each score category(standard: 1)
-MAX_FILLS = 5
-
-# Times of reroll(standard: 2)
-MAX_REROLLS = 6
-
-# Number of simulation games played
-NUM_GAMES = 2000
-
-
-# ==========================================
-
-def run_simulation():
-    # Create the game rule object
-    current_rules = GameRules(
-        num_dice=NUM_DICE,
-        num_faces=NUM_FACES,
-        max_category_fills=MAX_FILLS,
-        max_rerolls=MAX_REROLLS
-    )
-
-    print(f"Current Game Rule: {current_rules}")
+    print(f"Current Game Rule: {rules}")
 
     # Initialize the Strategies
     strategies = {
@@ -46,16 +21,16 @@ def run_simulation():
     results = {}
 
     # Simulation
-    print(f"start simulation for {NUM_GAMES} games")
+    print(f"start simulation for {num_games} games")
 
     for name, strat in strategies.items():
         print(f"  Current strategy {name}...")
 
         # Initialize the simulator
-        sim = Simulator(current_rules)
+        sim = Simulator(rules)
 
         # Run simulation
-        sim.simulate_many(strat, n=NUM_GAMES)
+        sim.simulate_many(strat, n=num_games)
 
         # Record all scores for visualization
         results[name] = sim.stats.total_scores
@@ -73,8 +48,8 @@ def run_simulation():
     plt.ylabel("Average Score", fontsize=12)
 
     title_str = (f"Yahtzee Strategy Comparison\n"
-                 f"Rules: {NUM_DICE} Dice, {NUM_FACES} Faces, "
-                 f"{MAX_FILLS}x Fill(s), {MAX_REROLLS} Reroll time(s)")
+                 f"Rules: {rules.num_dice} Dice, {rules.num_faces} Faces, "
+                 f"{rules.max_category_fills}x Fill(s), {rules.max_rerolls} Reroll time(s)")
     plt.title(title_str, fontsize=12, fontweight='bold')
 
     plt.legend(fontsize=10, loc='upper right', frameon=0.5)
@@ -85,4 +60,13 @@ def run_simulation():
 
 
 if __name__ == "__main__":
-    run_simulation()
+    # Set custom game rule
+    Game_rules = GameRules(
+        num_dice=5,
+        num_faces=6,
+        max_category_fills=1,
+        max_rerolls=2
+    )
+
+    # Run the simulation
+    run_simulation(Game_rules, num_games=2000)
