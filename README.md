@@ -46,13 +46,9 @@ Result H2: Under increased die-face conditions, AdvancedHumanLikeStrategy no lon
 
 
 
-
 **H3**: When the game allows more scoring opportunities per category by increasing from one fill-in to three, 
 the strategic advantages of strategies designed for scarce or restrictive rule settings are expected to diminish.
 ![alt text](https://github.com/ShuChen3/2025Fall_projects_SS/blob/main/H3_result.png)
-
-
-
 
 Result H3: Under expanded fill-in rules, HumanLikeStrategy and AdvancedHumanLikeStrategy continued to outperform the other strategies, with AdvancedHumanLikeStrategy achieving a slightly higher average score, although the performance gap between strategies was narrower than under standard rules.
 
