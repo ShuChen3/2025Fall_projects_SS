@@ -30,22 +30,29 @@ To demonstrate the framework, we implemented and evaluated five strategies inclu
 - AdvancedHumanLikeStrategy: Extends the HumanLike approach by placing greater emphasis on long-term planning, particularly upper-section bonus feasibility
 
 ### Hypothesis
-H1: Under the standard Yahtzee rules, strategy complexity will be positively correlated with average score. 
+**H1**: Under the standard Yahtzee rules, strategy complexity will be positively correlated with average score. 
 As strategies incorporate more forward-looking or probabilistic decision-making logic, their average final scores will increase
 ![alt text](https://github.com/ShuChen3/2025Fall_projects_SS/blob/main/H1_result.png)
 
 Result H1: The results support H1. Among the five strategies tested, AdvancedHumanLikeStrategy achieved the highest average score, followed closely by HumanLikeStrategy. Simpler strategies such as Random and Greedy—performed substantially worse.
 
 
-H2: When the number of faces on the dices increase, achieving the upper-section bonus becomes less feasible. 
+
+**H2**: When the number of faces on the dices increase, achieving the upper-section bonus becomes less feasible. 
 Under these conditions, strategies that rely on dynamically assessing bonus feasibility are expected to perform worse
 ![alt text](https://github.com/ShuChen3/2025Fall_projects_SS/blob/main/H2_result.png)
 
 Result H2: Under increased die-face conditions, AdvancedHumanLikeStrategy no longer clearly outperformed the other non-random strategies. Instead, SimpleRuleStrategy, GreedyStrategy, and HumanLikeStrategy achieved similar average scores, while RandomStrategy remained significantly worse.
 
-H3: When the game allows more scoring opportunities per category by increasing from one fill-in to three, 
+
+
+
+**H3**: When the game allows more scoring opportunities per category by increasing from one fill-in to three, 
 the strategic advantages of strategies designed for scarce or restrictive rule settings are expected to diminish.
 ![alt text](https://github.com/ShuChen3/2025Fall_projects_SS/blob/main/H3_result.png)
+
+
+
 
 Result H3: Under expanded fill-in rules, HumanLikeStrategy and AdvancedHumanLikeStrategy continued to outperform the other strategies, with AdvancedHumanLikeStrategy achieving a slightly higher average score, although the performance gap between strategies was narrower than under standard rules.
 
