@@ -52,6 +52,12 @@ the strategic advantages of strategies designed for scarce or restrictive rule s
 
 Result H3: Under expanded fill-in rules, HumanLikeStrategy and AdvancedHumanLikeStrategy continued to outperform the other strategies, with AdvancedHumanLikeStrategy achieving a slightly higher average score, although the performance gap between strategies was narrower than under standard rules.
 
+## Limitations of Findings
+These results are based only on the specific strategies implemented and tested in this project. 
+Although more complex strategies can be designed, greater complexity does not always lead to better performance. 
+In some cases, simpler strategies may perform just as well as or even better than more sophisticated ones under certain rule settings. 
+Therefore, the results should be interpreted within the scope of the strategies examined rather than as claims about optimal strategy in Yahtzee.
+
 ## References/Note 
 In this project, we utilized AI tools to help organize the overall design logic and assist with the implementation of certain functions,
 All final design decisions, code integration, simulation execution, and result validation were completed by the project team members.
